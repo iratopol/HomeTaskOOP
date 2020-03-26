@@ -7,4 +7,8 @@ public class Men extends Human {
         super(true, name, surName, height, weight);
     }
 
+    @Override
+    public String toString() {
+        return "Men " + super.toString();
+    }
 }

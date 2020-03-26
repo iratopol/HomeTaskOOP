@@ -8,7 +8,7 @@ package com.company;
         - рост (float)
         - вес (float)*/
 
-//свойства
+//variables
 public abstract class Human {
     private boolean gender;
     private String name;
@@ -16,7 +16,7 @@ public abstract class Human {
     private float height;
     private float weight;
 
-    //конструктор
+    //constructor
     public Human(boolean gender, String name, String surName, float height, float weight) {
         this.gender = gender;
         this.name = name;
@@ -25,19 +25,18 @@ public abstract class Human {
         this.weight = weight;
     }
 
-    //переопределение метода
     @Override
     public String toString() {
-        return "Human{" +
+        return "{" +
                 "gender=" + gender +
                 ", name='" + name + '\'' +
                 ", surName='" + surName + '\'' +
-                ", growth=" + height +
+                ", height=" + height +
                 ", weight=" + weight +
                 '}';
     }
 
-    //геттер
+    //getter
     public boolean isGender() {
         return gender;
     }
@@ -66,7 +65,7 @@ public abstract class Human {
     М            М            с вероятностью 0.5
 */
 
-    boolean talk(Human human) {
+    protected boolean talk(Human human) {
         if (this.gender && human.isGender()) {
             return Utils.random(0.5f);
         } else {
@@ -81,7 +80,7 @@ public abstract class Human {
     М            Ж            с вероятностью 0.7
     М            М            с вероятностью 0.056*/
 
-    boolean tolerate(Human human) {
+    protected boolean tolerate(Human human) {
         if (!this.gender && !human.isGender()) {
             return Utils.random(0.05f);
         } else if (this.gender && human.isGender()) {
@@ -95,15 +94,14 @@ public abstract class Human {
     если рост экземпляров отличается более чем на 10%, метод возвращает true с вероятностью 0.85
     если рост экземпляров отличается менее чем на 10%, метод возвращает true с вероятностью 0.95*/
 
-    boolean spendTimeTogether(Human human) {
+    protected boolean spendTimeTogether(Human human) {
         float fHumanHeight = this.height;
-        float sHumanGrowth = human.getHeight();
+        float sHumanHeight = human.getHeight();
         float z = 0;
-        if (fHumanHeight < sHumanGrowth) {
-            z = sHumanGrowth / fHumanHeight;
-        }
-        else {
-            z = fHumanHeight / sHumanGrowth;
+        if (fHumanHeight < sHumanHeight) {
+            z = sHumanHeight / fHumanHeight;
+        } else {
+            z = fHumanHeight / sHumanHeight;
         }
         if (z > 1.1) {
             return Utils.random(0.85f);
@@ -120,5 +118,15 @@ public abstract class Human {
       человека” у экземпляра с полом Ж.
 */
 
+    public Human haveRelationship(Human secondHuman) {
+        if (talk(secondHuman) && tolerate(secondHuman) && spendTimeTogether(secondHuman) &&
+                (this.gender && secondHuman.isGender() || !this.gender && !secondHuman.isGender())) {
+            return null;
+        } else {
+            return null;
+        }
+    }
+
 
 }
+
