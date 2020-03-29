@@ -36,8 +36,9 @@ public abstract class Human {
                 '}';
     }
 
+
     //getter
-    public boolean isGender() {
+    public boolean getGender() {
         return gender;
     }
 
@@ -57,7 +58,15 @@ public abstract class Human {
         return weight;
     }
 
-  /*  - "говорить" (возвращает boolean)
+    public boolean isMan() {
+        return this.gender;
+    }
+
+    public boolean isWoman() {
+        return !this.gender;
+    }
+
+      /*  - "говорить" (возвращает boolean)
     Результат определяется по таблице , где первая колонка это пол собственного экземпляра, а вторая - пол аргумента:
     Ж            Ж            всегда true
     Ж            М            true
@@ -66,7 +75,7 @@ public abstract class Human {
 */
 
     protected boolean talk(Human human) {
-        if (this.gender && human.isGender()) {
+        if (this.isMan() && human.isMan()) {
             return Utils.random(0.5f);
         } else {
             return true;
@@ -81,9 +90,9 @@ public abstract class Human {
     М            М            с вероятностью 0.056*/
 
     protected boolean tolerate(Human human) {
-        if (!this.gender && !human.isGender()) {
+        if (this.isWoman() && human.isWoman()) {
             return Utils.random(0.05f);
-        } else if (this.gender && human.isGender()) {
+        } else if (this.isMan() && human.isMan()) {
             return Utils.random(0.056f);
         } else {
             return Utils.random(0.7f);
@@ -97,7 +106,7 @@ public abstract class Human {
     protected boolean spendTimeTogether(Human human) {
         float fHumanHeight = this.height;
         float sHumanHeight = human.getHeight();
-        float z = 0;
+        float z;
         if (fHumanHeight < sHumanHeight) {
             z = sHumanHeight / fHumanHeight;
         } else {
@@ -120,13 +129,14 @@ public abstract class Human {
 
     public Human haveRelationship(Human secondHuman) {
         if (talk(secondHuman) && tolerate(secondHuman) && spendTimeTogether(secondHuman) &&
-                (this.gender && secondHuman.isGender() || !this.gender && !secondHuman.isGender())) {
-            return null;
-        } else {
-            return null;
-        }
+                this.gender != secondHuman.getGender()) {
+            if (this.isWoman()) {
+                return ((Women) this).toGiveBirth((Men) secondHuman);
+            }
+            if (secondHuman.isWoman()) {
+                return ((Women) secondHuman).toGiveBirth((Men) this);
+            }
+        } System.out.println("nothing happened... people broke up");
+        return null;
     }
-
-
 }
-

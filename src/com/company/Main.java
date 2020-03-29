@@ -24,7 +24,23 @@ public class Main {
         float sHumanWeight = humanSc.nextFloat();
         Human secondHuman = create(sHumanGender, sHumanName, sHumanSurname, sHumanHeight, sHumanWeight);
         System.out.println(secondHuman);
+        System.out.println(compatibilityTest(firstHuman, secondHuman));
 
+        // Women women = new Women("Ira", "Topol", 1.60f, 52.0f);
+       //Women women1 = new Women("Mira", "Hui", 1.67f, 53.0f);
+       // Men men = new Men("Ihor", "Totol", 1.90f, 80.0f);
+       // Men men1 = new Men("Illia", "Hulieiev", 1.75f, 85.0f);
+        //System.out.println(women);
+        //for (int i = 0; i < 100; i++) {
+           //System.out.println(women.tolerate(men));
+            //System.out.println(men.tolerate(women));
+            //System.out.println(women.talk(men));
+            //System.out.println(men.talk(women1));
+            //System.out.println(men.talk(men1));
+            //System.out.println(men1.spendTimeTogether(women1));
+            //System.out.println(women.spendTimeTogether(men));
+
+        //}
     }
 
     public static Human create(boolean gender, String name, String surname, float height, float weight) {
@@ -42,6 +58,7 @@ public class Main {
 
     public static Human compatibilityTest(Human firstHuman, Human secondHuman) {
         return firstHuman.haveRelationship(secondHuman);
+
     }
 
 }
