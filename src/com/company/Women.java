@@ -12,7 +12,6 @@ public class Women extends Human {
         return "Women " + super.toString();
     }
 
-
    /* У женщин есть дополнительный метод - "родить человека" (возвращает экземпляр человека)
     Он имеет следующую реализацию:
     Создать новый экземпляр женщины или мужчины с вероятностью 0.5 со следующими свойствами:
@@ -40,6 +39,5 @@ public class Women extends Human {
         } else {
             return new Men(babyName, babySurname, babyHeightBoy, babyWeightBoy);
         }
-
     }
 }

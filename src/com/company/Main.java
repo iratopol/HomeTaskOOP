@@ -6,17 +6,17 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println("Enter human`s gender, name, surname, growth, weight: ");
+        System.out.println("Enter human`s gender, name, surname, height, weight: ");
         Scanner humanSc = new Scanner(System.in);
         boolean fHumanGender = humanSc.nextBoolean();
         String fHumanName = humanSc.next();
-        String ffHumanSurname = humanSc.next();
+        String fHumanSurname = humanSc.next();
         float fHumanHeight = humanSc.nextFloat();
         float fHumanWeight = humanSc.nextFloat();
-        Human firstHuman = create(fHumanGender, fHumanName, ffHumanSurname, fHumanHeight, fHumanWeight);
+        Human firstHuman = create(fHumanGender, fHumanName, fHumanSurname, fHumanHeight, fHumanWeight);
         System.out.println(firstHuman);
 
-        System.out.println("Enter human`s gender, name, surname, growth, weight: ");
+        System.out.println("Enter human`s gender, name, surname, height, weight: ");
         boolean sHumanGender = humanSc.nextBoolean();
         String sHumanName = humanSc.next();
         String sHumanSurname = humanSc.next();
@@ -25,22 +25,6 @@ public class Main {
         Human secondHuman = create(sHumanGender, sHumanName, sHumanSurname, sHumanHeight, sHumanWeight);
         System.out.println(secondHuman);
         System.out.println(compatibilityTest(firstHuman, secondHuman));
-
-        // Women women = new Women("Ira", "Topol", 1.60f, 52.0f);
-       //Women women1 = new Women("Mira", "Hui", 1.67f, 53.0f);
-       // Men men = new Men("Ihor", "Totol", 1.90f, 80.0f);
-       // Men men1 = new Men("Illia", "Hulieiev", 1.75f, 85.0f);
-        //System.out.println(women);
-        //for (int i = 0; i < 100; i++) {
-           //System.out.println(women.tolerate(men));
-            //System.out.println(men.tolerate(women));
-            //System.out.println(women.talk(men));
-            //System.out.println(men.talk(women1));
-            //System.out.println(men.talk(men1));
-            //System.out.println(men1.spendTimeTogether(women1));
-            //System.out.println(women.spendTimeTogether(men));
-
-        //}
     }
 
     public static Human create(boolean gender, String name, String surname, float height, float weight) {
@@ -57,9 +41,13 @@ public class Main {
             3. Полученный результат вернуть как результат работы метода “тест на совместимость”.*/
 
     public static Human compatibilityTest(Human firstHuman, Human secondHuman) {
-        return firstHuman.haveRelationship(secondHuman);
-
+        Human result = firstHuman.haveRelationship(secondHuman);
+        if (result == null) {
+            System.out.println("nothing happened... people broke up");
+        }
+        return result;
     }
-
 }
+
+
 

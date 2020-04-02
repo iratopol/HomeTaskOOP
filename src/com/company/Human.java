@@ -8,7 +8,6 @@ package com.company;
         - рост (float)
         - вес (float)*/
 
-//variables
 public abstract class Human {
     private boolean gender;
     private String name;
@@ -16,7 +15,6 @@ public abstract class Human {
     private float height;
     private float weight;
 
-    //constructor
     public Human(boolean gender, String name, String surName, float height, float weight) {
         this.gender = gender;
         this.name = name;
@@ -36,8 +34,6 @@ public abstract class Human {
                 '}';
     }
 
-
-    //getter
     public boolean getGender() {
         return gender;
     }
@@ -136,7 +132,7 @@ public abstract class Human {
             if (secondHuman.isWoman()) {
                 return ((Women) secondHuman).toGiveBirth((Men) this);
             }
-        } System.out.println("nothing happened... people broke up");
+        }
         return null;
     }
 }
